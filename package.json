@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/CityOfDetroit/ems-messaging/issues"
   },
-  "homepage": "https://github.com/CityOfDetroit/ems-messaging#readme"
+  "homepage": "https://github.com/CityOfDetroit/ems-messaging#readme",
+  "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^4.4.1",
+    "mapbox-gl": "^1.2.1"
+  }
 }
