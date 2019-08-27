@@ -24462,33 +24462,45 @@ var _mapboxGl = _interopRequireDefault(require("mapbox-gl"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import Map from './components/map.class';
-mapboxgl.accessToken = 'pk.eyJ1IjoiYWVycmFiZWxseSIsImEiOiJjanpzdzEyanMwMDBxM25wZDdtdTl6bXB0In0.Imty6rsC039crf94Upmp-Q';
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2l0eW9mZGV0cm9pdCIsImEiOiJjajd3MGlodXIwZ3piMnhudmlzazVnNm44In0.BL29_7QRvcnOrVuXX_hD9A';
 var map = new mapboxgl.Map({
   container: 'map',
-  // container id
-  style: 'mapbox://styles/mapbox/streets-v11',
-  // stylesheet location
-  center: [-82.8754, 42.5197],
-  // starting position [lng, lat]
-  zoom: 11 // starting zoom
-
+  style: 'mapbox://styles/mapbox/light-v10',
+  zoom: 9,
+  center: [-83.3437, 42.2102]
 });
 map.on('load', function () {
   map.addLayer({
-    "id": "terrain-data",
+    "id": "zip_codes",
     "type": "line",
     "source": {
       type: 'vector',
       url: 'mapbox://cityofdetroit.7u1xneot'
     },
-    "source-layer": "contour",
+    "source-layer": "zip_codes-c4kt15",
     "layout": {
       "line-join": "round",
       "line-cap": "round"
     },
     "paint": {
       "line-color": "#ff69b4",
+      "line-width": 1
+    }
+  });
+  map.addLayer({
+    "id": "ems",
+    "type": "line",
+    "source": {
+      type: 'vector',
+      url: 'mapbox://cityofdetroit.8667lu5o'
+    },
+    "source-layer": "Zones-4pbuzw",
+    "layout": {
+      "line-join": "round",
+      "line-cap": "round"
+    },
+    "paint": {
+      "line-color": "blue",
       "line-width": 1
     }
   });

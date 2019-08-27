@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAAA;EACI;EACA;;;AAGJ;EACI;EACA;EACA;EACA","file":"style.97fcb138.css","sourceRoot":"..","sourcesContent":["body {\n    margin: 0;\n    padding: 0;\n}\n\n#map {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    width: 100%;\n}"]}
