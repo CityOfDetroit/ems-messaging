@@ -1,10 +1,10 @@
-import Controller from 'mapbox-gl';
+import Component from './components/component.class';
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2l0eW9mZGV0cm9pdCIsImEiOiJjajd3MGlodXIwZ3piMnhudmlzazVnNm44In0.BL29_7QRvcnOrVuXX_hD9A';
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10',
-    zoom: 9,
-    center: [-83.3437, 42.2102]
+    zoom: 11,
+    center: [-83.060303,42.348495]
 });
 map.on('load', function () {
     map.addLayer({
@@ -41,5 +41,21 @@ map.on('load', function () {
             "line-width": 1
         }
 
-    })
+    });
+    fetch('http://apis.detroitmi.gov/messenger/clients')
+        .then(resp => resp.json())
+        .then((data) => {
+            console.log("data"+data);
+            if (data && data.length) {
+            }
+        }).catch((error) => console.error(error));
 });
+import Controller from './components/component.class';
+
+
+(function start() {
+    document.getElementById('close-panel-btn').addEventListener('click', function () {
+        Component.Panel.clearPanel();
+        document.querySelector('.data-panel.active').className = 'data-panel';
+    });
+})(window);
