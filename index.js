@@ -1,11 +1,15 @@
-import Component from './components/component.class';
+import Model from "./components/model.class"
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2l0eW9mZGV0cm9pdCIsImEiOiJjajd3MGlodXIwZ3piMnhudmlzazVnNm44In0.BL29_7QRvcnOrVuXX_hD9A';
-var map = new mapboxgl.Map({
+const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10',
     zoom: 11,
     center: [-83.060303,42.348495]
 });
+const popup = new mapboxgl.Popup({closeOnClick: false})
+    .setLngLat([-83.060303,42.348495])
+    .setHTML('<h1>Hello World!</h1>')
+    .addTo(map);
 map.on('load', function () {
     map.addLayer({
         "id": "zip_codes",
@@ -42,20 +46,16 @@ map.on('load', function () {
         }
 
     });
-    fetch('http://apis.detroitmi.gov/messenger/clients')
-        .then(resp => resp.json())
-        .then((data) => {
-            console.log("data"+data);
-            if (data && data.length) {
-            }
-        }).catch((error) => console.error(error));
+
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "450px";
+        document.getElementById("main").style.marginLeft = "450px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+    }
+
 });
-import Controller from './components/component.class';
 
-
-(function start() {
-    document.getElementById('close-panel-btn').addEventListener('click', function () {
-        Component.Panel.clearPanel();
-        document.querySelector('.data-panel.active').className = 'data-panel';
-    });
-})(window);
