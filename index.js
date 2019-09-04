@@ -6,10 +6,10 @@ const map = new mapboxgl.Map({
     zoom: 11,
     center: [-83.060303,42.348495]
 });
-const popup = new mapboxgl.Popup({closeOnClick: false})
-    .setLngLat([-83.060303,42.348495])
-    .setHTML('<h1>Hello World!</h1>')
-    .addTo(map);
+
+const nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'bottom-right');
+
 map.on('load', function () {
     map.addLayer({
         "id": "zip_codes",
@@ -46,16 +46,40 @@ map.on('load', function () {
         }
 
     });
+    const popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: true
+    });
+    map.on('mouseenter', 'zip_codes', function(e){
+        map.getCanvas().style.cursor = 'pointer';
+        popup.setLngLat(e.features[0].geometry.coordinates)
+            .setHTML(e.features[0].properties.name)
+            console.log(name +" name")
+            .addTo(map);
+    });
+    map.on('mouseleave', 'zip_codes', function() {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
+    map.on('click', 'zip_codes', e => {
+        var name = e.features[0].properties.name;
+        console.log(iataCode +"e.features[0].properties.name");
 
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "450px";
-        document.getElementById("main").style.marginLeft = "450px";
-    }
 
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft= "0";
-    }
+
+        // Ensure the info box is visible
+        document.querySelector('.card').style.display = '';
+    });
+
 
 });
+function openNav() {
+    document.getElementById("mySidebar").style.width = "450px";
+    document.getElementById("main").style.marginLeft = "450px";
+}
+
+function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
 

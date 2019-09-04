@@ -146,9 +146,8 @@ var map = new mapboxgl.Map({
   zoom: 11,
   center: [-83.060303, 42.348495]
 });
-var popup = new mapboxgl.Popup({
-  closeOnClick: false
-}).setLngLat([-83.060303, 42.348495]).setHTML('<h1>Hello World!</h1>').addTo(map);
+var nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'bottom-right');
 map.on('load', function () {
   map.addLayer({
     "id": "zip_codes",
@@ -184,17 +183,36 @@ map.on('load', function () {
       "line-width": 1
     }
   });
+  var popup = new mapboxgl.Popup({
+    closeButton: false,
+    closeOnClick: true
+  });
+  map.on('mouseenter', 'zip_codes', function (e) {
+    map.getCanvas().style.cursor = 'pointer';
+    popup.setLngLat(e.features[0].geometry.coordinates).setHTML(e.features[0].properties.name);
+    console.log(name + " name").addTo(map);
+  });
+  map.on('mouseleave', 'zip_codes', function () {
+    map.getCanvas().style.cursor = '';
+    popup.remove();
+  });
+  map.on('click', 'zip_codes', function (e) {
+    var name = e.features[0].properties.name;
+    console.log(iataCode + "e.features[0].properties.name"); // Ensure the info box is visible
 
-  function openNav() {
-    document.getElementById("mySidebar").style.width = "450px";
-    document.getElementById("main").style.marginLeft = "450px";
-  }
-
-  function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
-  }
+    document.querySelector('.card').style.display = '';
+  });
 });
+
+function openNav() {
+  document.getElementById("mySidebar").style.width = "450px";
+  document.getElementById("main").style.marginLeft = "450px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
 },{"./components/model.class":"components/model.class.js"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
