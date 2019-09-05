@@ -117,28 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"components/model.class.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Model = function Model(container) {
-  _classCallCheck(this, Model);
-};
-
-exports.default = Model;
-},{}],"index.js":[function(require,module,exports) {
-"use strict";
-
-var _model = _interopRequireDefault(require("./components/model.class"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+})({"index.js":[function(require,module,exports) {
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2l0eW9mZGV0cm9pdCIsImEiOiJjajd3MGlodXIwZ3piMnhudmlzazVnNm44In0.BL29_7QRvcnOrVuXX_hD9A';
 var map = new mapboxgl.Map({
   container: 'map',
@@ -225,16 +204,20 @@ map.on('load', function () {
       'fill-color': 'rgba(200, 100, 240, 0.4)',
       'fill-outline-color': 'rgba(200, 100, 240, 1)'
     }
-  });
+  }); // geocoder for address search
+
+  map.addControl(new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+  })); // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
   var popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: true
-  });
-  var zipcodes = {
-    "ZIP_Code": ["48201", "48202", "48203", "48204", "48205", "48206", "48207", "48208", "48209", "48210", "48211", "48212", "48213", "48214", "48215", "48216", "48217", "48219", "48221", "48223", "48224", "48226", "48227", "48228", "48234", "48235", "48236", "48238", "48239", "48243"],
-    "DHSEM_Evacuation_Zone": ["1", "2", "3", "4", "5"]
-  };
-  map.on('render', function () {
+  }); // geocoder ends 
+  // Add API data to populate the map
+
+  map.on('render', "zip_codes", function () {
     var features = map.queryRenderedFeatures({
       layers: ['zip_codes']
     }); //console.log(features);
@@ -244,33 +227,43 @@ map.on('load', function () {
       document.getElementById("zipmessage").innerHTML = ''; //console.log(uniqueFeatures)
       //console.log(data.location.value);
 
-      var filtered = uniqueFeatures.filter(function (feature) {
-        var zipcode = feature.properties.zipcode;
-        return zipcodes.ZIP_Code.indexOf(zipcode) > -1;
-      });
-      filtered.forEach(function (f) {
-        var url = 'https://apis.detroitmi.gov/messenger/clients/1/locations/zipcode/' + String(f.properties.zipcode) + '/notifications/';
-        fetch(url, {
-          mode: 'cors'
-        }).then(function (resp) {
-          return resp.json();
-        }) // Transform the data into json
-        .then(function (data) {
-          //console.log(data);
-          if (data.notifications.length > 0) {
-            feature.properties.zipcode = data.location.value;
-            feature.properties.description = data.notifications[0].messages[0].message;
-            feature.geometry.coordinates = f.geometry.coordinates;
+      var zipcodes = null; // location APi contains of list of zipcode and ems zones
 
-            if (data1.features.indexOf(feature) == -1) {
-              data1.features.push(feature);
-              map.getSource('zipcode_fill').setData(data1);
-              popup.setLngLat(data1.features[0].geometry.coordinates[0][0]).setHTML(data1.features[0].properties.description).addTo(map);
-            }
+      fetch('https://apis.detroitmi.gov/messenger/locations/').then(function (resp) {
+        return resp.json();
+      }).then(function (data) {
+        //console.log(data);
+        zipcodes = data; //console.log(zipcodes)
 
-            document.getElementById("zipmessage").innerHTML = document.getElementById("zipmessage").innerHTML + '<Br/>' + 'Zipcode: ' + data.location.value + '<Br/>' + data1.features[0].properties.description;
-          }
+        var filtered = uniqueFeatures.filter(function (feature) {
+          var zipcode = feature.properties.zipcode;
+          return zipcodes.zipcode.values.indexOf(zipcode) > -1;
         });
+        filtered.forEach(function (f) {
+          var url = 'https://apis.detroitmi.gov/messenger/clients/1/locations/zipcode/' + String(f.properties.zipcode) + '/notifications/';
+          fetch(url, {
+            mode: 'cors'
+          }).then(function (resp) {
+            return resp.json();
+          }) // Transform the data into json
+          .then(function (data) {
+            //console.log(data);
+            if (data.notifications.length > 0) {
+              feature.properties.zipcode = data.location.value;
+              feature.properties.description = data.notifications[0].messages[0].message;
+              feature.geometry.coordinates = f.geometry.coordinates;
+
+              if (data1.features.indexOf(feature) == -1) {
+                data1.features.push(feature);
+                map.getSource('zipcode_fill').setData(data1);
+              }
+            }
+          });
+        });
+      });
+      data1.features.forEach(function (f) {
+        popup.setLngLat(f.geometry.coordinates[0][0]).setHTML(f.properties.description).addTo(map);
+        document.getElementById("zipmessage").innerHTML = document.getElementById("zipmessage").innerHTML + '<Br/>' + 'Zipcode: ' + f.properties.zipcode + '<Br/>' + f.properties.description;
       });
     }
   });
@@ -285,7 +278,7 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
 }
-},{"./components/model.class":"components/model.class.js"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -313,7 +306,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46729" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44169" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
