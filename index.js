@@ -61,19 +61,19 @@ map.on('load', function () {
 
     });
   var  data1 = { "type": "FeatureCollection",
-                      "features": [{
-                        "type": "Feature",
-                        "properties": {
-                        "description": "",
-                        "zipcode": ""
-                      },
-                      "geometry":{
-                        "type": "Polygon",
-                        "coordinates":[[]]
-                      }
-                    }]
+                      "features": []
                   };
-
+ var feature = {
+   "type": "Feature",
+   "properties": {
+   "description": "",
+   "zipcode": ""
+ },
+ "geometry":{
+   "type": "Polygon",
+   "coordinates":[[]]
+ }
+};
     map.addSource('zipcode_fill', { type: 'geojson', data: data1 });
     map.addLayer({
                     "id": "zip_codes_fill",
@@ -94,39 +94,42 @@ map.on('load', function () {
     map.on('mouseenter', 'zip_codes', function () {
     map.getCanvas().style.cursor = 'pointer';
 
+    var features = map.queryRenderedFeatures({ layers: ['zip_codes'] });
+    //console.log(features);
+    if (features) {
+      var uniqueFeatures = getUniqueFeatures(features, "zipcode");
+      document.getElementById("zipmessage").innerHTML = '';
+      //console.log(uniqueFeatures)
+      //console.log(data.location.value);
+      uniqueFeatures.forEach(f => {
+        var url = 'https://apis.detroitmi.gov/messenger/clients/1/locations/'+ String(f.properties.zipcode)+'/notifications/';
+        fetch(url, { mode: 'cors' })
+          .then(resp => resp.json()) // Transform the data into json
+          .then((data) => {
+             console.log(data);
+             if(data.location.value)
+                 {
+                  //console.log(f)
+                  //console.log(data1)
+                  //console.log(data.notifications)
+                 feature.properties.zipcode = data.location.value;
+                 feature.properties.description = data.notifications[0].messages[0].message;
+                 feature.geometry.coordinates = f.geometry.coordinates;
 
-      fetch('https://apis.detroitmi.gov/messenger/clients/1/locations/48214/notifications/', { mode: 'cors' })
-        .then(resp => resp.json()) // Transform the data into json
-        .then((data) => {
-           //console.log(data);
-           var features = map.queryRenderedFeatures({ layers: ['zip_codes'] });
-           //console.log(features);
-           if (features) {
-             var uniqueFeatures = getUniqueFeatures(features, "zipcode");
-             //console.log(uniqueFeatures)
-             //console.log(data.location.value);
-             uniqueFeatures.forEach(f => {
-               if(f.properties.zipcode == data.location.value)
-                   {
-                    //console.log(f)
-                    //console.log(data1)
-                    //console.log(data.notifications)
-                   data1.features[0].properties.zipcode = data.location.value;
-                   data1.features[0].properties.description = data.notifications[0].messages[0].message;
-                   data1.features[0].geometry.coordinates = f.geometry.coordinates;
-                   //console.log(f.geometry.coordinates[0][0]);
-                   map.getSource('zipcode_fill').setData(data1);
-                   popup.setLngLat(data1.features[0].geometry.coordinates[0][0])
-                       .setHTML(data1.features[0].properties.description)
-                       .addTo(map);
+                 data1.features.push(feature);
+                 //console.log(f.geometry.coordinates[0][0]);
+                 map.getSource('zipcode_fill').setData(data1);
+                 popup.setLngLat(data1.features[0].geometry.coordinates[0][0])
+                     .setHTML(data1.features[0].properties.description)
+                     .addTo(map);
 
-                  document.getElementById("zipmessage").innerHTML = data1.features[0].properties.description;
-                 }
-             })
-           }
-        });
+                document.getElementById("zipmessage").innerHTML = document.getElementById("zipmessage").innerHTML + '<Br/>' + 'Zipcode: '+data.location.value +'<Br/>'+data1.features[0].properties.description;
+               }
+          });
 
 
+      })
+    }
 
     });
 
