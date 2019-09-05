@@ -230,8 +230,11 @@ map.on('load', function () {
     closeButton: false,
     closeOnClick: true
   });
-  map.on('mouseenter', 'zip_codes', function () {
-    map.getCanvas().style.cursor = 'pointer';
+  var zipcodes = {
+    "ZIP_Code": ["48201", "48202", "48203", "48204", "48205", "48206", "48207", "48208", "48209", "48210", "48211", "48212", "48213", "48214", "48215", "48216", "48217", "48219", "48221", "48223", "48224", "48226", "48227", "48228", "48234", "48235", "48236", "48238", "48239", "48243"],
+    "DHSEM_Evacuation_Zone": ["1", "2", "3", "4", "5"]
+  };
+  map.on('render', function () {
     var features = map.queryRenderedFeatures({
       layers: ['zip_codes']
     }); //console.log(features);
@@ -241,36 +244,35 @@ map.on('load', function () {
       document.getElementById("zipmessage").innerHTML = ''; //console.log(uniqueFeatures)
       //console.log(data.location.value);
 
-      uniqueFeatures.forEach(function (f) {
-        var url = 'https://apis.detroitmi.gov/messenger/clients/1/locations/' + String(f.properties.zipcode) + '/notifications/';
+      var filtered = uniqueFeatures.filter(function (feature) {
+        var zipcode = feature.properties.zipcode;
+        return zipcodes.ZIP_Code.indexOf(zipcode) > -1;
+      });
+      filtered.forEach(function (f) {
+        var url = 'https://apis.detroitmi.gov/messenger/clients/1/locations/zipcode/' + String(f.properties.zipcode) + '/notifications/';
         fetch(url, {
           mode: 'cors'
         }).then(function (resp) {
           return resp.json();
         }) // Transform the data into json
         .then(function (data) {
-          console.log(data);
-
-          if (data.location.value) {
-            //console.log(f)
-            //console.log(data1)
-            //console.log(data.notifications)
+          //console.log(data);
+          if (data.notifications.length > 0) {
             feature.properties.zipcode = data.location.value;
             feature.properties.description = data.notifications[0].messages[0].message;
             feature.geometry.coordinates = f.geometry.coordinates;
-            data1.features.push(feature); //console.log(f.geometry.coordinates[0][0]);
 
-            map.getSource('zipcode_fill').setData(data1);
-            popup.setLngLat(data1.features[0].geometry.coordinates[0][0]).setHTML(data1.features[0].properties.description).addTo(map);
+            if (data1.features.indexOf(feature) == -1) {
+              data1.features.push(feature);
+              map.getSource('zipcode_fill').setData(data1);
+              popup.setLngLat(data1.features[0].geometry.coordinates[0][0]).setHTML(data1.features[0].properties.description).addTo(map);
+            }
+
             document.getElementById("zipmessage").innerHTML = document.getElementById("zipmessage").innerHTML + '<Br/>' + 'Zipcode: ' + data.location.value + '<Br/>' + data1.features[0].properties.description;
           }
         });
       });
     }
-  }); // Change it back to a pointer when it leaves.
-
-  map.on('mouseleave', 'zip_codes', function () {
-    map.getCanvas().style.cursor = '';
   });
 });
 
@@ -311,7 +313,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44007" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46729" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
