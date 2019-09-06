@@ -7,6 +7,7 @@ const map = new mapboxgl.Map({
   center: [-83.060303, 42.348495]
 });
 
+let baseUrl = 'https://apis.detroitmi.gov/';
 function getUniqueFeatures(array, comparatorProperty) {
   var existingFeatureKeys = {};
   // Because features come from tiled vector data, feature geometries may be split
@@ -89,7 +90,7 @@ map.on('load', function() {
     "source": "zipcode_fill",
     "paint": {
       'fill-color': 'rgba(200, 100, 240, 0.4)',
-      'fill-outline-color': 'rgba(200, 100, 240, 1)'
+      // 'fill-outline-color': 'rgba(200, 100, 240, 1)'
     }
   });
   
@@ -127,7 +128,11 @@ map.on('load', function() {
     closeOnClick: true
   });
 // geocoder ends 
-// Add API data to populate the map
+// POST API for the user to subscribe for phone alerts
+//https://apis.detroitmi.gov/messenger/clients/
+//http://apis.detroitmi.gov/messenger/clients/<client id>/subscribe/
+//http://apis.detroitmi.gov/messenger/clients/1/subscribe/
+// Add API data to populate the map // GET
   map.on('render',"zip_codes" , function() {
     var features = map.queryRenderedFeatures({
       layers: ['zip_codes']
@@ -140,7 +145,7 @@ map.on('load', function() {
       //console.log(data.location.value);
       var zipcodes = null;
    // location APi contains of list of zipcode and ems zones
-      fetch('https://apis.detroitmi.gov/messenger/locations/').then(resp => resp.json()).then((data)=> {
+      fetch(baseUrl + '/messenger/locations/').then(resp => resp.json()).then((data)=> {
         //console.log(data);
         zipcodes = data;
         //console.log(zipcodes)
@@ -149,7 +154,7 @@ map.on('load', function() {
           return zipcodes.zipcode.values.indexOf(zipcode) > -1;
         });
         filtered.forEach(f => {
-          var url = 'https://apis.detroitmi.gov/messenger/clients/1/locations/zipcode/' + String(f.properties.zipcode) + '/notifications/';
+          var url = baseUrl + '/messenger/clients/1/locations/zipcode/' + String(f.properties.zipcode) + '/notifications/';
           fetch(url, {
               mode: 'cors'
             })
@@ -178,8 +183,41 @@ map.on('load', function() {
     }
   })
 });
+function postData(url = '', data = {}) {
+  // Default options are marked with *
+    return fetch(url, {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, cors, *same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrer: 'no-referrer', // no-referrer, *client
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+    })
+    .then(response => response.json()).then(data =>
+    {
+      //console.log(data)
+      if(data.error){
+        document.getElementById('message').innerHTML = data.error
+      }else {
+        document.getElementById('message').innerHTML = data.message//add code here to popup success
+      }
+    }); // parses JSON response into native JavaScript objects
+}
 
-
+function subscribe(){
+ 
+  url = 'http://apis.detroitmi.gov/messenger/clients/1/subscribe/';
+  data = {
+    "phone_number": String(document.getElementById('telephone').value),
+    "address": String(document.getElementsByClassName('mapboxgl-ctrl-geocoder--input')[0].value)
+  }
+  postData(url,data);
+}
 
 function openNav() {
   document.getElementById("mySidebar").style.width = "450px";
