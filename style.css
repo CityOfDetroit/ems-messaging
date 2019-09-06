@@ -83,10 +83,6 @@ form {
 #geocoder {
     position: relative;
     z-index: 1;
-    width: 50%;
-    left: 50%;
-    margin-left: -25%;
-    top: 20px;
 }
 
 .mapboxgl-ctrl-geocoder {

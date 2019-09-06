@@ -206,10 +206,28 @@ map.on('load', function () {
     }
   }); // geocoder for address search
 
-  map.addControl(new MapboxGeocoder({
+  var geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
+    // limit results to North America
+    countries: 'us',
+    // further limit results to the geographic bounds representing the region of
+    // Detroit Michigan
+    bbox: [-83.3437, 42.2102, -82.8754, 42.5197],
+    // apply a client side filter to further limit results to those strictly within
+    // the New South Wales region
+    filter: function filter(item) {
+      // returns true if item contains New South Wales region
+      return item.context.map(function (i) {
+        // id is in the form {index}.{id} per https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
+        // this example attempts to find the `region` named `Detroit Michigan`
+        return i.id.split('.').shift() === 'region' && i.text === 'Michigan';
+      }).reduce(function (acc, cur) {
+        return acc || cur;
+      });
+    },
     mapboxgl: mapboxgl
-  })); // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+  });
+  document.getElementById('geocoder').appendChild(geocoder.onAdd(map)); // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
   var popup = new mapboxgl.Popup({
     closeButton: false,
@@ -306,7 +324,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44169" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52171" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
