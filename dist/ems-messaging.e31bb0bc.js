@@ -117,7 +117,70 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"index.js":[function(require,module,exports) {
+})({"components/function.js":[function(require,module,exports) {
+exports.openNav = function () {
+  document.getElementById("mySidebar").style.width = "450px";
+  document.getElementById("main").style.marginLeft = "450px";
+};
+
+exports.closeNav = function () {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+};
+},{}],"components/signup.js":[function(require,module,exports) {
+function postData() {
+  var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  // Default options are marked with *
+  return fetch(url, {
+    method: 'POST',
+    // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors',
+    // no-cors, cors, *same-origin
+    cache: 'no-cache',
+    // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin',
+    // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json' // 'Content-Type': 'application/x-www-form-urlencoded',
+
+    },
+    redirect: 'follow',
+    // manual, *follow, error
+    referrer: 'no-referrer',
+    // no-referrer, *client
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+
+  }).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    //console.log(data)
+    if (data.error) {
+      document.getElementById('message').innerHTML = data.error;
+    } else {
+      document.getElementById('message').innerHTML = data.message; //add code here to popup success
+    }
+  }); // parses JSON response into native JavaScript objects
+}
+
+exports.subscribe = function () {
+  //selectedclient = document.getElementById('clients').value;
+  url = 'http://apis.detroitmi.gov/messenger/clients/' + '1' + //selectedclient+
+  '/subscribe/';
+  data = {
+    "phone_number": String(document.getElementById('email').value),
+    "address": String(document.getElementsByClassName('mapboxgl-ctrl-geocoder--input')[0].value)
+  };
+  postData(url, data);
+};
+},{}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _function = require("./components/function.js");
+
+var _signup = require("./components/signup.js");
+
+//load map
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2l0eW9mZGV0cm9pdCIsImEiOiJjajd3MGlodXIwZ3piMnhudmlzazVnNm44In0.BL29_7QRvcnOrVuXX_hD9A';
 var map = new mapboxgl.Map({
   container: 'map',
@@ -142,6 +205,10 @@ function getUniqueFeatures(array, comparatorProperty) {
   return uniqueFeatures;
 }
 
+var popup = new mapboxgl.Popup({
+  closeButton: false,
+  closeOnClick: true
+});
 var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'bottom-right');
 map.on('load', function () {
@@ -158,29 +225,28 @@ map.on('load', function () {
       'fill-color': 'rgba(200, 100, 240, 0.0)',
       'fill-outline-color': "#ff69b4"
     }
-  });
+  }); //zip_codes : all zipcodes type fill with ouline pink
+
   map.addLayer({
     "id": "ems",
-    "type": "line",
+    "type": "fill",
     "source": {
       type: 'vector',
       url: 'mapbox://cityofdetroit.8667lu5o' // city of detroit ems alerts
 
     },
     "source-layer": "Zones-4pbuzw",
-    "layout": {
-      "line-join": "round",
-      "line-cap": "round"
-    },
     "paint": {
-      "line-color": "blue",
-      "line-width": 1
+      'fill-color': 'rgba(200, 100, 240, 0.0)',
+      'fill-outline-color': "blue"
     }
-  });
+  }); //ems: all zones with blue color outline type fill
+
   var data1 = {
     "type": "FeatureCollection",
     "features": []
-  };
+  }; // this is the sourcedata to fill the zipcodes polygons
+
   var feature = {
     "type": "Feature",
     "properties": {
@@ -191,11 +257,13 @@ map.on('load', function () {
       "type": "Polygon",
       "coordinates": [[]]
     }
-  };
+  }; // Features template for data1 datasource
+
   map.addSource('zipcode_fill', {
     type: 'geojson',
     data: data1
-  });
+  }); //this is the data source to fill the zipcodes polygons
+
   map.addLayer({
     "id": "zip_codes_fill",
     "type": "fill",
@@ -204,7 +272,8 @@ map.on('load', function () {
       'fill-color': 'rgba(200, 100, 240, 0.4)',
       'fill-outline-color': 'rgba(200, 100, 240, 1)'
     }
-  }); // geocoder for address search
+  }); // this is a layer of filled polygon of zipcodes
+  // geocoder for address search
 
   var geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
@@ -214,9 +283,9 @@ map.on('load', function () {
     // Detroit Michigan
     bbox: [-83.3437, 42.2102, -82.8754, 42.5197],
     // apply a client side filter to further limit results to those strictly within
-    // the New South Wales region
+    // the detroit michigan region
     filter: function filter(item) {
-      // returns true if item contains New South Wales region
+      // returns true if item contains the detroit michigan region
       return item.context.map(function (i) {
         // id is in the form {index}.{id} per https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
         // this example attempts to find the `region` named `Detroit Michigan`
@@ -228,75 +297,81 @@ map.on('load', function () {
     mapboxgl: mapboxgl
   });
   document.getElementById('geocoder').appendChild(geocoder.onAdd(map)); // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-
-  var popup = new mapboxgl.Popup({
-    closeButton: false,
-    closeOnClick: true
-  }); // geocoder ends 
+  // geocoder ends
   // Add API data to populate the map
 
+  var map_loaded = 0;
   map.on('render', "zip_codes", function () {
-    var features = map.queryRenderedFeatures({
-      layers: ['zip_codes']
-    }); //console.log(features);
+    if (map_loaded == 0) {
+      map_loaded = 1;
+      var features = map.queryRenderedFeatures({
+        layers: ['zip_codes']
+      }); //console.log(features);
 
-    if (features) {
-      var uniqueFeatures = getUniqueFeatures(features, "zipcode");
-      document.getElementById("zipmessage").innerHTML = ''; //console.log(uniqueFeatures)
-      //console.log(data.location.value);
+      if (features) {
+        var uniqueFeatures = getUniqueFeatures(features, "zipcode");
+        document.getElementById("zipmessage").innerHTML = ''; //console.log(uniqueFeatures)
+        //console.log(data.location.value);
 
-      var zipcodes = null; // location APi contains of list of zipcode and ems zones
+        var zipcodes = null; // location APi contains of list of zipcode and ems zones
 
-      fetch('https://apis.detroitmi.gov/messenger/locations/').then(function (resp) {
-        return resp.json();
-      }).then(function (data) {
-        //console.log(data);
-        zipcodes = data; //console.log(zipcodes)
+        fetch('https://apis.detroitmi.gov/messenger/locations/').then(function (resp) {
+          return resp.json();
+        }).then(function (data) {
+          //console.log(data);
+          zipcodes = data; //console.log(zipcodes)
 
-        var filtered = uniqueFeatures.filter(function (feature) {
-          var zipcode = feature.properties.zipcode;
-          return zipcodes.zipcode.values.indexOf(zipcode) > -1;
-        });
-        filtered.forEach(function (f) {
-          var url = 'https://apis.detroitmi.gov/messenger/clients/1/locations/zipcode/' + String(f.properties.zipcode) + '/notifications/';
-          fetch(url, {
-            mode: 'cors'
-          }).then(function (resp) {
-            return resp.json();
-          }) // Transform the data into json
-          .then(function (data) {
-            //console.log(data);
-            if (data.notifications.length > 0) {
-              feature.properties.zipcode = data.location.value;
-              feature.properties.description = data.notifications[0].messages[0].message;
-              feature.geometry.coordinates = f.geometry.coordinates;
-
-              if (data1.features.indexOf(feature) == -1) {
-                data1.features.push(feature);
-                map.getSource('zipcode_fill').setData(data1);
-              }
-            }
+          var filtered = uniqueFeatures.filter(function (feature) {
+            var zipcode = feature.properties.zipcode;
+            return zipcodes.zipcode.values.indexOf(zipcode) > -1;
           });
-        });
-      });
-      data1.features.forEach(function (f) {
-        popup.setLngLat(f.geometry.coordinates[0][0]).setHTML(f.properties.description).addTo(map);
+          filtered.forEach(function (f) {
+            var url = 'https://apis.detroitmi.gov/messenger/clients/1/locations/zipcode/' + String(f.properties.zipcode) + '/notifications/';
+            fetch(url, {
+              mode: 'cors'
+            }).then(function (resp) {
+              return resp.json();
+            }) // Transform the data into json
+            .then(function (data) {
+              //console.log(data);
+              if (data.notifications.length > 0) {
+                feature.properties.zipcode = data.location.value;
+                feature.properties.description = data.notifications[0].messages[0].message;
+                feature.geometry.coordinates = f.geometry.coordinates;
+
+                if (data1.features.indexOf(feature) == -1) {
+                  data1.features.push(feature);
+                  map.getSource('zipcode_fill').setData(data1);
+                }
+              }
+            }); // then data
+          }); // adding features with notifications to datasource
+        }); // fetch locations
+      } //if feature
+
+    } // if map loaded
+
+  }); // on render
+
+  var zipmessageadded = [];
+  map.on('data', 'zip_codes_fill', function () {
+    data1.features.forEach(function (f) {
+      popup.setLngLat(f.geometry.coordinates[0][0]).setHTML(f.properties.description).addTo(map);
+
+      if (zipmessageadded.indexOf(f.properties.zipcode) == -1) {
+        zipmessageadded.push(f.properties.zipcode);
         document.getElementById("zipmessage").innerHTML = document.getElementById("zipmessage").innerHTML + '<Br/>' + 'Zipcode: ' + f.properties.zipcode + '<Br/>' + f.properties.description;
-      });
-    }
+      }
+    }); // for popup
   });
-});
+}); // map on load
 
-function openNav() {
-  document.getElementById("mySidebar").style.width = "450px";
-  document.getElementById("main").style.marginLeft = "450px";
-}
-
-function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
-}
-},{}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+(function init() {
+  document.getElementById("openSidebar").addEventListener("click", _function.openNav);
+  document.getElementById("closeSidebar").addEventListener("click", _function.closeNav);
+  document.getElementById("subscribe").addEventListener("click", _signup.subscribe);
+})();
+},{"./components/function.js":"components/function.js","./components/signup.js":"components/signup.js"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -324,7 +399,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52171" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52243" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

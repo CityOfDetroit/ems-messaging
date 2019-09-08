@@ -13,6 +13,8 @@ body {
     height: 100%;
 }
 
+/* Sidebar */
+
 .sidebar {
     height: 100%;
     width: 0;
@@ -33,16 +35,6 @@ body {
     display: block;
     transition: 0.3s;
 }
-
-.card {
-    float: right;
-    z-index: 1000;
-}
-
-form {
-    padding: 10px;
-}
-
 .sidebar a:hover {
     color: #f1f1f1;
 }
@@ -54,7 +46,6 @@ form {
     font-size: 36px;
     margin-left: 50px;
 }
-
 .openbtn {
     font-size: 20px;
     cursor: pointer;
@@ -72,6 +63,18 @@ form {
     background-color: #444;
 }
 
+/* sidebar ends */
+
+/* information box starts */
+.card {
+    float: right;
+    z-index: 1000;
+}
+
+form {
+    padding: 10px;
+}
+
 #main {
     position: relative;
     transition: margin-left .5s;
@@ -84,9 +87,17 @@ form {
     position: relative;
     z-index: 1;
 }
+.mapboxgl-ctrl-geocoder--input
+{
 
+}
 .mapboxgl-ctrl-geocoder {
     min-width: 100%;
+}
+@media screen and (min-width: 640px){
+    .mapboxgl-ctrl-geocoder {
+        min-width: 100%;
+    }
 }
 
 @media screen and (max-height: 450px) {

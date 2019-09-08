@@ -1,60 +1,52 @@
 <!DOCTYPE>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Add a vector tile source</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js"></script>
-    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style.e308ff8e.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.css" type="text/css">
-<script src="/style.e308ff8e.js"></script></head>
-<body>
-    <section class="content-section"></section>
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Phone Number</label>
-                <input type="email" class="form-control" id="email" placeholder="Phone number">
-                <small id="emailHelp" class="form-text text-muted">Enter your phone number for alerts.</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Enter your address</label>
-                <div type="text" class="geocoder" id="geocoder" placeholder="Address"></div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-       
-                
-    </div>
-    <div id="main">
-        <div class="card" id="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Alert !!!</h5>
-                <p class="card-text" id="zipmessage"></p>
-                <p class="card-text" id="emsmessage"></p>
-                <a href="#" class="btn btn-primary openbtn" onClick="openNav()">Sign Up for alerts</a>
-            </div>
-        </div>
-        <div id="map"></div>
-    </div>
-    <script>function openNav() {
-  document.getElementById("mySidebar").style.width = "450px";
-  document.getElementById("main").style.marginLeft = "450px";
-}
 
-function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
-}</script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js"></script>
-    
-        <script src="/ems-messaging.e31bb0bc.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<head>
+  <meta charset="utf-8">
+  <title>Add a vector tile source</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js"></script>
+  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.e308ff8e.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.css" type="text/css">
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js"></script>
+<script src="/style.e308ff8e.js"></script></head>
+
+<body>
+  <section class="content-section"></section>
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" id="closeSidebar">×</a>
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Phone Number</label>
+        <input type="email" class="form-control" id="email" required="" placeholder="Phone number">
+        <small id="emailHelp" class="form-text text-muted">Enter your phone number for alerts.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Enter your address</label>
+        <div type="text" class="geocoder" required="" id="geocoder" placeholder="Address"></div>
+      </div>
+      <button type="button" id="subscribe" class="btn btn-primary">Submit</button>
+    </form>
+    <label for="exampleInputPassword1" id="message"></label>
+
+  </div>
+  <div id="main">
+    <div class="card" id="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Alert !!!</h5>
+        <p class="card-text" id="zipmessage"></p>
+        <p class="card-text" id="emsmessage"></p>
+        <a href="#" class="btn btn-primary openbtn" id="openSidebar">Sign Up for alerts</a>
+      </div>
+    </div>
+    <div id="map"></div>
+  </div>
+  <script src="/ems-messaging.e31bb0bc.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
