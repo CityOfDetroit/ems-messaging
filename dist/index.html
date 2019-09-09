@@ -14,23 +14,28 @@
 <script src="/style.e308ff8e.js"></script></head>
 
 <body>
-  <section class="content-section"></section>
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" id="closeSidebar">×</a>
+    <div class="brandLogo" style="text-align: center">
+        <img src="/share-image.704e49fa.png" style="width: 150px;">
+    </div>
     <form>
+        <h3>Signup for alerts</h3>
+        <hr>
       <div class="form-group">
-        <label for="exampleInputEmail1">Phone Number</label>
-        <input type="email" class="form-control" id="email" required="" placeholder="Phone number">
+        <label for="inputTelephone">Phone Number</label>
+        <input type="tel" name="number" class="form-control" id="inputTelephone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="1234567890" required="">
         <small id="emailHelp" class="form-text text-muted">Enter your phone number for alerts.</small>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Enter your address</label>
+        <label for="geocoder">Enter your address</label>
         <div type="text" class="geocoder" required="" id="geocoder" placeholder="Address"></div>
       </div>
       <button type="button" id="subscribe" class="btn btn-primary">Submit</button>
+       <div>   
+      <label for="errorMessage" id="message"></label>
+    </div>
     </form>
-    <label for="exampleInputPassword1" id="message"></label>
-
   </div>
   <div id="main">
     <div class="card" id="card" style="width: 18rem;">
@@ -48,5 +53,4 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-
 </html>

@@ -89,6 +89,9 @@ font-size: 12px;
     position: relative;
     z-index: 1;
 }
+/* input:required{
+    border-color: red;
+} */
 .mapboxgl-ctrl-geocoder--input
 {
 

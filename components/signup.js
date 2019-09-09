@@ -15,11 +15,19 @@ function postData(url = '', data = {}) {
     })
     .then(response => response.json()).then(data =>
     {
+  
       //console.log(data)
       if(data.error){
-        document.getElementById('message').innerHTML = data.error
+        const warningMessage = document.getElementById('message');
+        warningMessage.style.color = 'red';
+        warningMessage.innerHTML = data.error;
+        console.log("data error"+data.error)
+        // document.getElementById("inputTelephone").style.color = "red";
+        // document.getElementsByClassName("mapboxgl-ctrl-geocoder--input").style.borderColor = "red";
       }else {
-        document.getElementById('message').innerHTML = data.message//add code here to popup success
+        const successMessage = document.getElementById('message');
+        successMessage.style.color = 'green';
+        successMessage.innerHTML = data.message//add code here to popup success
       }
     }); // parses JSON response into native JavaScript objects
 }
@@ -30,7 +38,7 @@ exports.subscribe =function (){
   +'1'+ //selectedclient+
   '/subscribe/';
   data = {
-    "phone_number": String(document.getElementById('email').value),
+    "phone_number": String(document.getElementById('inputTelephone').value),
     "address": String(document.getElementsByClassName('mapboxgl-ctrl-geocoder--input')[0].value)
   }
   postData(url,data);

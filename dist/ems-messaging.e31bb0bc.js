@@ -156,9 +156,15 @@ function postData() {
   }).then(function (data) {
     //console.log(data)
     if (data.error) {
-      document.getElementById('message').innerHTML = data.error;
+      var warningMessage = document.getElementById('message');
+      warningMessage.style.color = 'red';
+      warningMessage.innerHTML = data.error;
+      console.log("data error" + data.error); // document.getElementById("inputTelephone").style.color = "red";
+      // document.getElementsByClassName("mapboxgl-ctrl-geocoder--input").style.borderColor = "red";
     } else {
-      document.getElementById('message').innerHTML = data.message; //add code here to popup success
+      var successMessage = document.getElementById('message');
+      successMessage.style.color = 'green';
+      successMessage.innerHTML = data.message; //add code here to popup success
     }
   }); // parses JSON response into native JavaScript objects
 }
@@ -168,7 +174,7 @@ exports.subscribe = function () {
   url = 'http://apis.detroitmi.gov/messenger/clients/' + '1' + //selectedclient+
   '/subscribe/';
   data = {
-    "phone_number": String(document.getElementById('email').value),
+    "phone_number": String(document.getElementById('inputTelephone').value),
     "address": String(document.getElementsByClassName('mapboxgl-ctrl-geocoder--input')[0].value)
   };
   postData(url, data);
@@ -399,7 +405,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56171" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45843" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
