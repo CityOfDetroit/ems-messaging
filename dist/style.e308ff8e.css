@@ -89,12 +89,11 @@ font-size: 12px;
     position: relative;
     z-index: 1;
 }
-/* input:required{
-    border-color: red;
-} */
-.mapboxgl-ctrl-geocoder--input
-{
-
+.brandLogo{
+    text-align: center
+}
+#logo-img{
+    width: 150px;
 }
 .mapboxgl-ctrl-geocoder {
     min-width: 100%;
