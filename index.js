@@ -99,7 +99,7 @@ import {subscribe} from './components/signup.js'
       }
     }); // this is a layer of filled polygon of zipcodes
 
-    // geocoder for address search
+    //================ geocoder for address search====================//
     let geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
 
@@ -114,9 +114,8 @@ import {subscribe} from './components/signup.js'
       // the detroit michigan region
       filter: function(item) {
         // returns true if item contains the detroit michigan region
-        return item.context.map(function(i) {
-          // id is in the form {index}.{id} per https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
-          // this example attempts to find the `region` named `Detroit Michigan`
+        return item.context.map(function (i) {
+          // this code attempts to find the `region` named `Detroit Michigan`
           return (i.id.split('.').shift() === 'region' && i.text === 'Michigan');
         }).reduce(function(acc, cur) {
           return acc || cur;
@@ -129,7 +128,7 @@ import {subscribe} from './components/signup.js'
 
     // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
-    // geocoder ends
+    //================ geocoder for address search ends====================//
     // Add API data to populate the map
 
     let map_loaded = 0;
@@ -189,9 +188,8 @@ import {subscribe} from './components/signup.js'
           .addTo(map);
         if (zipmessageadded.indexOf(f.properties.zipcode) == -1) {
           zipmessageadded.push(f.properties.zipcode);
-          document.getElementById("zipmessage").innerHTML = document.getElementById("zipmessage").innerHTML + '<Br/>' + 'Zipcode: ' + f.properties.zipcode + '<Br/>' + f.properties.description;
+          document.getElementById("zipmessage").innerHTML = document.getElementById("zipmessage").innerHTML + f.properties.description;
         }
-
       }) // for popup
     })
 

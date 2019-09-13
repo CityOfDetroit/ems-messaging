@@ -279,7 +279,7 @@ map.on('load', function () {
       'fill-outline-color': 'rgba(200, 100, 240, 1)'
     }
   }); // this is a layer of filled polygon of zipcodes
-  // geocoder for address search
+    //================ geocoder for address search====================//
 
   var geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
@@ -293,8 +293,7 @@ map.on('load', function () {
     filter: function filter(item) {
       // returns true if item contains the detroit michigan region
       return item.context.map(function (i) {
-        // id is in the form {index}.{id} per https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
-        // this example attempts to find the `region` named `Detroit Michigan`
+          // this code attempts to find the `region` named `Detroit Michigan`
         return i.id.split('.').shift() === 'region' && i.text === 'Michigan';
       }).reduce(function (acc, cur) {
         return acc || cur;
@@ -303,7 +302,7 @@ map.on('load', function () {
     mapboxgl: mapboxgl
   });
   document.getElementById('geocoder').appendChild(geocoder.onAdd(map)); // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-  // geocoder ends
+    //================ geocoder for address search ends====================//
   // Add API data to populate the map
 
   var map_loaded = 0;
