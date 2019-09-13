@@ -229,7 +229,7 @@ map.on('load', function () {
     "source-layer": "zip_codes-c4kt15",
     "paint": {
       'fill-color': 'rgba(200, 100, 240, 0.0)',
-      'fill-outline-color': "#ff69b4"
+      'fill-outline-color': "white"
     }
   }); //zip_codes : all zipcodes type fill with ouline pink
 
@@ -244,7 +244,7 @@ map.on('load', function () {
     "source-layer": "Zones-4pbuzw",
     "paint": {
       'fill-color': 'rgba(200, 100, 240, 0.0)',
-      'fill-outline-color': "blue"
+      'fill-outline-color': "white"
     }
   }); //ems: all zones with blue color outline type fill
 

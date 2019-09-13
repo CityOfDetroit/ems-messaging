@@ -1,6 +1,5 @@
 <!DOCTYPE>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <title>Ems messaging</title>
@@ -14,21 +13,17 @@
 <script src="/style.e308ff8e.js"></script></head>
 
 <body>
-    
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" id="closeSidebar">×</a>
-    <div class="brandLogo">
-        <img id="logo-img" src="/share-image.704e49fa.png">
-    </div>
     <form>
-        <h4>SIGNUP FOR ALERTS</h4>
+        <h4>Signup for alerts</h4>
         <hr>
       <div class="form-group">
-        <label for="inputTelephone">Phone Number</label>
-        <input type="tel" name="number" class="form-control" id="inputTelephone" maxlength="10" placeholder="1234567890" required="">
+        <label for="inputTelephone" class="inputLabel">Phone Number</label><br>
+        <input type="tel" name="number" id="inputTelephone" maxlength="10" placeholder="1234567890" required="">
         <small id="phoneHelp" class="form-text text-muted">Enter your phone number for alerts.</small>
-      </div>
-      <button type="button" id="subscribe" class="btn btn-primary">Submit</button>
+      </div><br>
+      <button type="button" id="subscribe" class="btn">Submit</button>
        <div>   
       <label for="errorMessage" id="message"></label>
     </div>
@@ -40,7 +35,7 @@
       <div class="card-body">
         <h5 class="card-title">Alert !!!</h5>
         <p class="card-text" id="zipmessage"></p>
-        <p class="card-text" id="emsmessage"></p>
+        <!-- <p class="card-text" id="emsmessage"></p> -->
         <a href="#" class="btn btn-primary openbtn" id="openSidebar">Sign Up for alerts</a>
       </div>
     </div>
