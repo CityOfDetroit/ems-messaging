@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Add a vector tile source</title>
+  <title>Ems messaging</title>
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js"></script>
   <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css" rel="stylesheet">
@@ -14,6 +14,7 @@
 <script src="/style.e308ff8e.js"></script></head>
 
 <body>
+    
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" id="closeSidebar">×</a>
     <div class="brandLogo">
@@ -27,10 +28,6 @@
         <input type="tel" name="number" class="form-control" id="inputTelephone" maxlength="10" placeholder="1234567890" required="">
         <small id="phoneHelp" class="form-text text-muted">Enter your phone number for alerts.</small>
       </div>
-      <div class="form-group">
-        <label for="geocoder">Enter your address</label>
-        <div type="text" class="geocoder" required="" id="geocoder" placeholder="Address"></div>
-      </div>
       <button type="button" id="subscribe" class="btn btn-primary">Submit</button>
        <div>   
       <label for="errorMessage" id="message"></label>
@@ -38,6 +35,7 @@
     </form>
   </div>
   <div id="main">
+      <div type="text" class="geocoder" required="" id="geocoder" placeholder="Address"></div>
     <div class="card" id="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Alert !!!</h5>
