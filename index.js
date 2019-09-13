@@ -12,11 +12,11 @@ import {subscribe} from './components/signup.js'
   });
 
   function getUniqueFeatures(array, comparatorProperty) {
-    var existingFeatureKeys = {};
+    const existingFeatureKeys = {};
     // Because features come from tiled vector data, feature geometries may be split
     // or duplicated across tile boundaries and, as a result, features may appear
     // multiple times in query results.
-    var uniqueFeatures = array.filter(function(el) {
+    const uniqueFeatures = array.filter(function (el) {
       if (existingFeatureKeys[el.properties[comparatorProperty]]) {
         return false;
       } else {
@@ -65,12 +65,12 @@ import {subscribe} from './components/signup.js'
 
     }); //ems: all zones with blue color outline type fill
 
-    var data1 = {
+    let data1 = {
       "type": "FeatureCollection",
       "features": []
     }; // this is the sourcedata to fill the zipcodes polygons
 
-    var feature = {
+    let feature = {
       "type": "Feature",
       "properties": {
         "description": "",
@@ -100,7 +100,7 @@ import {subscribe} from './components/signup.js'
     }); // this is a layer of filled polygon of zipcodes
 
     // geocoder for address search
-    var geocoder = new MapboxGeocoder({
+    let geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
 
       // limit results to North America
@@ -132,11 +132,11 @@ import {subscribe} from './components/signup.js'
     // geocoder ends
     // Add API data to populate the map
 
-    var map_loaded = 0;
+    let map_loaded = 0;
     map.on('render', "zip_codes", function() {
       if (map_loaded == 0) {
         map_loaded = 1;
-        var features = map.queryRenderedFeatures({
+        let features = map.queryRenderedFeatures({
           layers: ['zip_codes']
         });
         //console.log(features);

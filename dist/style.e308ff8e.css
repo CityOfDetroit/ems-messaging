@@ -3,6 +3,10 @@ body {
     padding: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 900 !important;
+    line-height: 1.3em;
+}
 #map {
     position: absolute;
     top: 0;
@@ -73,6 +77,13 @@ body {
 
 form {
     padding: 10px;
+}
+
+h5 {
+    border-bottom: solid #e48f22;
+    color: #004544;
+    margin-top: 1em;
+    font-size: 20px;
 }
 
 #main {
