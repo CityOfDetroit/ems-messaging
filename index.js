@@ -33,7 +33,7 @@ import {subscribe} from './components/signup.js'
     closeOnClick: true
   });
   const nav = new mapboxgl.NavigationControl();
-  map.addControl(nav, 'bottom-right');
+map.addControl(nav, 'top-right');
 
   map.on('load', function() {
     map.addLayer({

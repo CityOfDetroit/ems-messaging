@@ -216,7 +216,7 @@ var popup = new mapboxgl.Popup({
   closeOnClick: true
 });
 var nav = new mapboxgl.NavigationControl();
-map.addControl(nav, 'bottom-right');
+map.addControl(nav, 'top-right');
 map.on('load', function () {
   map.addLayer({
     "id": "zip_codes",
@@ -279,7 +279,7 @@ map.on('load', function () {
       'fill-outline-color': 'rgba(200, 100, 240, 1)'
     }
   }); // this is a layer of filled polygon of zipcodes
-    //================ geocoder for address search====================//
+  //================ geocoder for address search====================//
 
   var geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
@@ -293,7 +293,7 @@ map.on('load', function () {
     filter: function filter(item) {
       // returns true if item contains the detroit michigan region
       return item.context.map(function (i) {
-          // this code attempts to find the `region` named `Detroit Michigan`
+        // this code attempts to find the `region` named `Detroit Michigan`
         return i.id.split('.').shift() === 'region' && i.text === 'Michigan';
       }).reduce(function (acc, cur) {
         return acc || cur;
@@ -302,7 +302,7 @@ map.on('load', function () {
     mapboxgl: mapboxgl
   });
   document.getElementById('geocoder').appendChild(geocoder.onAdd(map)); // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-    //================ geocoder for address search ends====================//
+  //================ geocoder for address search ends====================//
   // Add API data to populate the map
 
   var map_loaded = 0;
@@ -365,7 +365,7 @@ map.on('load', function () {
 
       if (zipmessageadded.indexOf(f.properties.zipcode) == -1) {
         zipmessageadded.push(f.properties.zipcode);
-        document.getElementById("zipmessage").innerHTML = document.getElementById("zipmessage").innerHTML + '<Br/>' + 'Zipcode: ' + f.properties.zipcode + '<Br/>' + f.properties.description;
+        document.getElementById("zipmessage").innerHTML = document.getElementById("zipmessage").innerHTML + f.properties.description;
       }
     }); // for popup
   });
@@ -404,7 +404,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36267" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39425" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

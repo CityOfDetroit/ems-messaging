@@ -14,19 +14,21 @@
 
 <body>
   <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" id="closeSidebar">×</a>
-    <form>
-      <h5>Signup for alerts</h5>
-      <div class="form-group">
-        <label for="inputTelephone" class="inputLabel">Phone Number</label><br>
-        <input type="tel" name="number" id="inputTelephone" maxlength="10" placeholder="1234567890" required="">
-        <small id="phoneHelp" class="form-text text-muted">Enter your phone number for alerts.</small>
-      </div><br>
-      <button type="button" id="subscribe" class="btn">Submit</button>
-       <div>   
-      <label for="errorMessage" id="message"></label>
+    <div class="container">
+      <a href="javascript:void(0)" class="closebtn" id="closeSidebar">×</a>
+      <form>
+        <h5>Signup for alerts</h5>
+        <div class="form-group">
+          <label for="inputTelephone" class="inputLabel">Phone Number</label><br>
+          <input type="tel" name="number" id="inputTelephone" maxlength="10" placeholder="1234567890" required="">
+          <small id="phoneHelp" class="form-text text-muted">Enter your phone number for alerts.</small>
+          <button type="button" class="button" id="subscribe">Submit</button>
+        </div>
+        <div>
+          <label for="errorMessage" id="message"></label>
+        </div>
+      </form>
     </div>
-    </form>
   </div>
   <div id="main">
       <div type="text" class="geocoder" required="" id="geocoder" placeholder="Address"></div>
@@ -34,8 +36,7 @@
       <div class="card-body">
         <h5 class="card-title">Alert !!!</h5>
         <p class="card-text" id="zipmessage"></p>
-        <!-- <p class="card-text" id="emsmessage"></p> -->
-        <a href="#" class="btn btn-primary openbtn" id="openSidebar">Sign Up for alerts</a>
+        <a href="#" class="button openbtn" id="openSidebar">Sign Up for alerts</a>
       </div>
     </div>
     <div id="map"></div>
