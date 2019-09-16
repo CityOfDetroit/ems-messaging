@@ -119,8 +119,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"components/function.js":[function(require,module,exports) {
 exports.openNav = function () {
-  document.getElementById("mySidebar").style.width = "450px";
-  document.getElementById("main").style.marginLeft = "450px";
+    document.getElementById("mySidebar").style.width = "400px";
+    document.getElementById("main").style.marginLeft = "400px";
 };
 
 exports.closeNav = function () {
@@ -216,7 +216,7 @@ var popup = new mapboxgl.Popup({
   closeOnClick: true
 });
 var nav = new mapboxgl.NavigationControl();
-map.addControl(nav, 'top-right');
+        map.addControl(nav, 'top-left');
 map.on('load', function () {
   map.addLayer({
     "id": "zip_codes",
@@ -275,8 +275,8 @@ map.on('load', function () {
     "type": "fill",
     "source": "zipcode_fill",
     "paint": {
-      'fill-color': 'rgba(200, 100, 240, 0.4)',
-      'fill-outline-color': 'rgba(200, 100, 240, 1)'
+        'fill-color': '#004544',
+        'fill-outline-color': '#004544'
     }
   }); // this is a layer of filled polygon of zipcodes
   //================ geocoder for address search====================//

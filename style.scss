@@ -3,21 +3,42 @@ h1, h2, h3, h4, h5, h6 {
         line-height: 1.3em;
     }
 
- $layout-breakpoint-small: 400px;
+%openBtnStyle {
+              font-size: 20px;
+                cursor: pointer;
+                background-color: #9fd5b3;
+                color: #004544;
+                padding: 10px 15px;
+                border: none;
+                top: 10px;
+                left: 10px;
+                z-index: 1;
+                border-radius: 3px;
+}
+ $layout-breakpoint-small: 200px;
 
- @media (max-width: $layout-breakpoint-small) {
-   #card{
-     position: absolute;
-     bottom: 0;
-   }
- }
- @media screen and (min-width: 640px){
-//      .mapboxgl-ctrl-geocoder {
-//          min-width: 100%;
-//      }
- }
 
- @media screen and (max-height: 450px) {
+ @media (min-width: $layout-breakpoint-small) and (max-width : 400px) {
+   .card {
+         z-index: 1;
+         bottom: 0px;
+         position: absolute;
+               }
+ }
+ @media screen and(min-width:401px) and (max-width: 1640px){
+   .card {
+         top:0px;
+         z-index: 1;
+         position:absolute;
+         right:0px;
+         height: 155px;
+//          .openbtn {
+//             @extend %openBtnStyle;
+//                    }
+            }
+      }
+
+ @media screen and (max-width: $layout-breakpoint-small )and (max-height: 450px) {
      .sidebar {
          padding-top: 15px;
      }
@@ -109,7 +130,7 @@ body {
         font-size: 12px;
         }
         .mapboxgl-ctrl-geocoder {
-//             float:right;
+           left: 27px;
         }
     #geocoder {
         padding-right: 30px;
@@ -126,30 +147,14 @@ body {
          height: 100%;
 
      }
-     .card {
-         z-index: 1000;
-         .openbtn {
-             font-size: 20px;
-             cursor: pointer;
-             background-color: #9fd5b3;
-             color: #004544;
-             padding: 10px 15px;
-             border: none;
-             top: 10px;
-             left: 10px;
-             z-index: 1;
-             border-radius: 3px;
-                   }
-            }
-         }
-         @media screen and (min-width: 450px) {
-             .card {
-                 float:bottom
-             }
+//      card changes
+#card{
+position:absolute;
+.openbtn {
+                @extend %openBtnStyle;
+                      }
+}
 
-             .sidebar a {
-                 font-size: 18px;
-             }
          }
       }
 

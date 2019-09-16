@@ -1,1 +1,1335 @@
-{"id":"style.scss","dependencies":[{"name":"/home/errabellya/Github/ems-messaging/style.scss","includedInParent":true,"mtime":1568407578501},{"name":"_css_loader","parent":"/home/errabellya/Github/ems-messaging/style.scss","resolved":"/usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"},{"name":"/home/errabellya/Github/ems-messaging/package.json","includedInParent":true,"mtime":1568398169888}],"generated":{"css":"h1, h2, h3, h4, h5, h6 {\n  font-weight: 900 !important;\n  line-height: 1.3em;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n}\nbody .sidebar {\n  height: 100%;\n  width: 0;\n  position: fixed;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  overflow-x: hidden;\n  transition: 0.5s;\n}\nbody .sidebar a {\n  padding: 8px 8px 8px 32px;\n  text-decoration: none;\n  font-size: 25px;\n  color: #818181;\n  display: block;\n  transition: 0.3s;\n}\nbody .sidebar a:hover {\n  color: #f1f1f1;\n}\nbody .closebtn {\n  position: absolute;\n  top: 0;\n  right: 25px;\n  font-size: 36px;\n  margin-left: 50px;\n}\nbody form h5 {\n  border-bottom: solid #e48f22;\n  color: #004544;\n  margin-top: 1em;\n  font-size: 25px;\n  padding-bottom: 12px;\n}\nbody form .inputLabel {\n  text-transform: uppercase;\n  font-weight: 900;\n}\nbody form input {\n  font-size: 16px;\n  padding: 7px 28px;\n  border: 3px solid #004445;\n}\nbody form button {\n  transition: all 0.2s ease-in-out;\n  font-size: 16px;\n  text-transform: uppercase;\n  font-weight: 900;\n  background: transparent;\n  background-color: #9fd5b3;\n  border: 3px solid #004445;\n  padding: 8px 11px;\n  color: #004544;\n  border-color: #004445;\n  margin-top: 22px;\n}\nbody form button:hover {\n  background-color: #9fd5b3;\n}\nbody #main {\n  position: relative;\n  transition: margin-left 0.5s;\n  padding: 16px;\n  height: 100%;\n}\nbody #main .mapboxgl-ctrl-geocoder--suggestion-title, body #main .mapboxgl-ctrl-geocoder--suggestion-address {\n  font-size: 12px;\n}\nbody #main .mapboxgl-ctrl-geocoder {\n  float: right;\n}\nbody #main #geocoder {\n  padding-right: 30px;\n  position: relative;\n  z-index: 1;\n}\nbody #main #map {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\nbody #main .card {\n  position: relative;\n  z-index: 1000;\n}\nbody #main .card .openbtn {\n  font-size: 20px;\n  cursor: pointer;\n  background-color: #9fd5b3;\n  color: #004544;\n  padding: 10px 15px;\n  border: none;\n  top: 10px;\n  left: 10px;\n  z-index: 1;\n  border-radius: 3px;\n}\n\n@media screen and (min-width: 640px) {\n  .mapboxgl-ctrl-geocoder {\n    min-width: 100%;\n  }\n}\n@media screen and (max-height: 450px) {\n  .sidebar {\n    padding-top: 15px;\n  }\n\n  .sidebar a {\n    font-size: 18px;\n  }\n}","js":"var reloadCSS = require('_css_loader');\n\nmodule.hot.dispose(reloadCSS);\nmodule.hot.accept(reloadCSS);"},"sourceMaps":{"css":{"mappings":[{"source":"style.scss","name":null,"original":{"line":1,"column":0},"generated":{"line":1,"column":0}},{"source":"style.scss","name":null,"original":{"line":2,"column":8},"generated":{"line":2,"column":2}},{"source":"style.scss","name":null,"original":{"line":3,"column":8},"generated":{"line":3,"column":2}},{"source":"style.scss","name":null,"original":{"line":5,"column":0},"generated":{"line":6,"column":0}},{"source":"style.scss","name":null,"original":{"line":6,"column":4},"generated":{"line":7,"column":2}},{"source":"style.scss","name":null,"original":{"line":7,"column":4},"generated":{"line":8,"column":2}},{"source":"style.scss","name":null,"original":{"line":9,"column":1},"generated":{"line":10,"column":0}},{"source":"style.scss","name":null,"original":{"line":10,"column":5},"generated":{"line":11,"column":2}},{"source":"style.scss","name":null,"original":{"line":11,"column":5},"generated":{"line":12,"column":2}},{"source":"style.scss","name":null,"original":{"line":12,"column":5},"generated":{"line":13,"column":2}},{"source":"style.scss","name":null,"original":{"line":13,"column":5},"generated":{"line":14,"column":2}},{"source":"style.scss","name":null,"original":{"line":14,"column":5},"generated":{"line":15,"column":2}},{"source":"style.scss","name":null,"original":{"line":15,"column":5},"generated":{"line":16,"column":2}},{"source":"style.scss","name":null,"original":{"line":16,"column":5},"generated":{"line":17,"column":2}},{"source":"style.scss","name":null,"original":{"line":17,"column":5},"generated":{"line":18,"column":2}},{"source":"style.scss","name":null,"original":{"line":18,"column":5},"generated":{"line":20,"column":0}},{"source":"style.scss","name":null,"original":{"line":19,"column":9},"generated":{"line":21,"column":2}},{"source":"style.scss","name":null,"original":{"line":20,"column":9},"generated":{"line":22,"column":2}},{"source":"style.scss","name":null,"original":{"line":21,"column":9},"generated":{"line":23,"column":2}},{"source":"style.scss","name":null,"original":{"line":22,"column":9},"generated":{"line":24,"column":2}},{"source":"style.scss","name":null,"original":{"line":23,"column":9},"generated":{"line":25,"column":2}},{"source":"style.scss","name":null,"original":{"line":24,"column":9},"generated":{"line":26,"column":2}},{"source":"style.scss","name":null,"original":{"line":25,"column":9},"generated":{"line":28,"column":0}},{"source":"style.scss","name":null,"original":{"line":26,"column":13},"generated":{"line":29,"column":2}},{"source":"style.scss","name":null,"original":{"line":30,"column":9},"generated":{"line":31,"column":0}},{"source":"style.scss","name":null,"original":{"line":31,"column":21},"generated":{"line":32,"column":2}},{"source":"style.scss","name":null,"original":{"line":32,"column":21},"generated":{"line":33,"column":2}},{"source":"style.scss","name":null,"original":{"line":33,"column":21},"generated":{"line":34,"column":2}},{"source":"style.scss","name":null,"original":{"line":34,"column":21},"generated":{"line":35,"column":2}},{"source":"style.scss","name":null,"original":{"line":35,"column":21},"generated":{"line":36,"column":2}},{"source":"style.scss","name":null,"original":{"line":38,"column":12},"generated":{"line":38,"column":0}},{"source":"style.scss","name":null,"original":{"line":40,"column":22},"generated":{"line":39,"column":2}},{"source":"style.scss","name":null,"original":{"line":41,"column":22},"generated":{"line":40,"column":2}},{"source":"style.scss","name":null,"original":{"line":42,"column":22},"generated":{"line":41,"column":2}},{"source":"style.scss","name":null,"original":{"line":43,"column":22},"generated":{"line":42,"column":2}},{"source":"style.scss","name":null,"original":{"line":44,"column":22},"generated":{"line":43,"column":2}},{"source":"style.scss","name":null,"original":{"line":46,"column":18},"generated":{"line":45,"column":0}},{"source":"style.scss","name":null,"original":{"line":48,"column":27},"generated":{"line":46,"column":2}},{"source":"style.scss","name":null,"original":{"line":49,"column":27},"generated":{"line":47,"column":2}},{"source":"style.scss","name":null,"original":{"line":51,"column":18},"generated":{"line":49,"column":0}},{"source":"style.scss","name":null,"original":{"line":52,"column":22},"generated":{"line":50,"column":2}},{"source":"style.scss","name":null,"original":{"line":53,"column":22},"generated":{"line":51,"column":2}},{"source":"style.scss","name":null,"original":{"line":54,"column":22},"generated":{"line":52,"column":2}},{"source":"style.scss","name":null,"original":{"line":57,"column":18},"generated":{"line":54,"column":0}},{"source":"style.scss","name":null,"original":{"line":58,"column":22},"generated":{"line":55,"column":2}},{"source":"style.scss","name":null,"original":{"line":59,"column":22},"generated":{"line":56,"column":2}},{"source":"style.scss","name":null,"original":{"line":60,"column":22},"generated":{"line":57,"column":2}},{"source":"style.scss","name":null,"original":{"line":61,"column":22},"generated":{"line":58,"column":2}},{"source":"style.scss","name":null,"original":{"line":62,"column":22},"generated":{"line":59,"column":2}},{"source":"style.scss","name":null,"original":{"line":63,"column":22},"generated":{"line":60,"column":2}},{"source":"style.scss","name":null,"original":{"line":64,"column":22},"generated":{"line":61,"column":2}},{"source":"style.scss","name":null,"original":{"line":65,"column":22},"generated":{"line":62,"column":2}},{"source":"style.scss","name":null,"original":{"line":66,"column":22},"generated":{"line":63,"column":2}},{"source":"style.scss","name":null,"original":{"line":67,"column":22},"generated":{"line":64,"column":2}},{"source":"style.scss","name":null,"original":{"line":68,"column":22},"generated":{"line":65,"column":2}},{"source":"style.scss","name":null,"original":{"line":69,"column":22},"generated":{"line":67,"column":0}},{"source":"style.scss","name":null,"original":{"line":70,"column":22},"generated":{"line":68,"column":2}},{"source":"style.scss","name":null,"original":{"line":79,"column":5},"generated":{"line":70,"column":0}},{"source":"style.scss","name":null,"original":{"line":80,"column":8},"generated":{"line":71,"column":2}},{"source":"style.scss","name":null,"original":{"line":81,"column":8},"generated":{"line":72,"column":2}},{"source":"style.scss","name":null,"original":{"line":82,"column":8},"generated":{"line":73,"column":2}},{"source":"style.scss","name":null,"original":{"line":83,"column":8},"generated":{"line":74,"column":2}},{"source":"style.scss","name":null,"original":{"line":84,"column":8},"generated":{"line":76,"column":0}},{"source":"style.scss","name":null,"original":{"line":85,"column":8},"generated":{"line":77,"column":2}},{"source":"style.scss","name":null,"original":{"line":87,"column":8},"generated":{"line":79,"column":0}},{"source":"style.scss","name":null,"original":{"line":88,"column":12},"generated":{"line":80,"column":2}},{"source":"style.scss","name":null,"original":{"line":90,"column":4},"generated":{"line":82,"column":0}},{"source":"style.scss","name":null,"original":{"line":91,"column":8},"generated":{"line":83,"column":2}},{"source":"style.scss","name":null,"original":{"line":92,"column":8},"generated":{"line":84,"column":2}},{"source":"style.scss","name":null,"original":{"line":93,"column":8},"generated":{"line":85,"column":2}},{"source":"style.scss","name":null,"original":{"line":95,"column":5},"generated":{"line":87,"column":0}},{"source":"style.scss","name":null,"original":{"line":96,"column":9},"generated":{"line":88,"column":2}},{"source":"style.scss","name":null,"original":{"line":97,"column":9},"generated":{"line":89,"column":2}},{"source":"style.scss","name":null,"original":{"line":98,"column":9},"generated":{"line":90,"column":2}},{"source":"style.scss","name":null,"original":{"line":99,"column":9},"generated":{"line":91,"column":2}},{"source":"style.scss","name":null,"original":{"line":100,"column":9},"generated":{"line":92,"column":2}},{"source":"style.scss","name":null,"original":{"line":101,"column":9},"generated":{"line":93,"column":2}},{"source":"style.scss","name":null,"original":{"line":102,"column":9},"generated":{"line":94,"column":2}},{"source":"style.scss","name":null,"original":{"line":105,"column":5},"generated":{"line":96,"column":0}},{"source":"style.scss","name":null,"original":{"line":106,"column":9},"generated":{"line":97,"column":2}},{"source":"style.scss","name":null,"original":{"line":107,"column":9},"generated":{"line":98,"column":2}},{"source":"style.scss","name":null,"original":{"line":108,"column":9},"generated":{"line":100,"column":0}},{"source":"style.scss","name":null,"original":{"line":110,"column":13},"generated":{"line":101,"column":2}},{"source":"style.scss","name":null,"original":{"line":111,"column":13},"generated":{"line":102,"column":2}},{"source":"style.scss","name":null,"original":{"line":112,"column":13},"generated":{"line":103,"column":2}},{"source":"style.scss","name":null,"original":{"line":113,"column":13},"generated":{"line":104,"column":2}},{"source":"style.scss","name":null,"original":{"line":114,"column":13},"generated":{"line":105,"column":2}},{"source":"style.scss","name":null,"original":{"line":115,"column":13},"generated":{"line":106,"column":2}},{"source":"style.scss","name":null,"original":{"line":116,"column":13},"generated":{"line":107,"column":2}},{"source":"style.scss","name":null,"original":{"line":117,"column":13},"generated":{"line":108,"column":2}},{"source":"style.scss","name":null,"original":{"line":118,"column":13},"generated":{"line":109,"column":2}},{"source":"style.scss","name":null,"original":{"line":119,"column":13},"generated":{"line":110,"column":2}},{"source":"style.scss","name":null,"original":{"line":128,"column":0},"generated":{"line":113,"column":0}},{"source":"style.scss","name":null,"original":{"line":129,"column":4},"generated":{"line":114,"column":2}},{"source":"style.scss","name":null,"original":{"line":130,"column":8},"generated":{"line":115,"column":4}},{"source":"style.scss","name":null,"original":{"line":134,"column":0},"generated":{"line":118,"column":0}},{"source":"style.scss","name":null,"original":{"line":135,"column":4},"generated":{"line":119,"column":2}},{"source":"style.scss","name":null,"original":{"line":136,"column":8},"generated":{"line":120,"column":4}},{"source":"style.scss","name":null,"original":{"line":139,"column":4},"generated":{"line":123,"column":2}},{"source":"style.scss","name":null,"original":{"line":140,"column":8},"generated":{"line":124,"column":4}}],"sources":{"style.scss":"h1, h2, h3, h4, h5, h6 {\n        font-weight: 900 !important;\n        line-height: 1.3em;\n    }\nbody {\n    margin: 0;\n    padding: 0;\n//     Sidebar stylings\n .sidebar {\n     height: 100%;\n     width: 0;\n     position: fixed;\n     z-index: 1;\n     top: 0;\n     left: 0;\n     overflow-x: hidden;\n     transition: 0.5s;\n     a {\n         padding: 8px 8px 8px 32px;\n         text-decoration: none;\n         font-size: 25px;\n         color: #818181;\n         display: block;\n         transition: 0.3s;\n         &:hover{\n             color: #f1f1f1;\n             }\n             }\n         }\n         .closebtn {\n                     position: absolute;\n                     top: 0;\n                     right: 25px;\n                     font-size: 36px;\n                     margin-left: 50px;\n                 }\n           form {\n            h5 {\n\n                      border-bottom: solid #e48f22;\n                      color: #004544;\n                      margin-top: 1em;\n                      font-size: 25px;\n                      padding-bottom: 12px;\n                  }\n                  .inputLabel\n                         {\n                           text-transform: uppercase;\n                           font-weight: 900;\n                          }\n                  input{\n                      font-size: 16px;\n                      padding: 7px 28px;\n                      border: 3px solid #004445;\n\n                  }\n                  button{\n                      transition: all .2s ease-in-out;\n                      font-size: 16px;\n                      text-transform: uppercase;\n                      font-weight: 900;\n                      background: transparent;\n                      background-color: #9fd5b3;\n                      border: 3px solid #004445;\n                      padding: 8px 11px;\n                      color: #004544;\n                      border-color: #004445;\n                      margin-top: 22px;\n                      &:hover{\n                      background-color: #9fd5b3\n                      }\n                  }\n\n           }\n\n\n\n//      main , Map , Card\n     #main {\n        position: relative;\n        transition: margin-left .5s;\n        padding: 16px;\n        height: 100%;\n        .mapboxgl-ctrl-geocoder--suggestion-title,.mapboxgl-ctrl-geocoder--suggestion-address{\n        font-size: 12px;\n        }\n        .mapboxgl-ctrl-geocoder {\n            float:right;\n        }\n    #geocoder {\n        padding-right: 30px;\n        position: relative;\n        z-index: 1;\n    }\n     #map{\n         position: absolute;\n         top: 0;\n         right: 0;\n         bottom: 0;\n         left: 0;\n         width: 100%;\n         height: 100%;\n\n     }\n     .card {\n         position:relative;\n         z-index: 1000;\n         .openbtn {\n\n             font-size: 20px;\n             cursor: pointer;\n             background-color: #9fd5b3;\n             color: #004544;\n             padding: 10px 15px;\n             border: none;\n             top: 10px;\n             left: 10px;\n             z-index: 1;\n             border-radius: 3px;\n                      }\n                      }\n\n         }\n      }\n\n\n\n@media screen and (min-width: 640px){\n    .mapboxgl-ctrl-geocoder {\n        min-width: 100%;\n    }\n}\n\n@media screen and (max-height: 450px) {\n    .sidebar {\n        padding-top: 15px;\n    }\n\n    .sidebar a {\n        font-size: 18px;\n    }\n}"},"lineCount":null}},"error":null,"hash":"93726e3942903dc7ef521932fc71a020","cacheData":{"env":{}}}
+{
+  "id": "style.scss",
+  "dependencies": [
+    {
+      "name": "/home/errabellya/Github/ems-messaging/style.scss",
+      "includedInParent": true,
+      "mtime": 1568651367691
+    },
+    {
+      "name": "_css_loader",
+      "parent": "/home/errabellya/Github/ems-messaging/style.scss",
+      "resolved": "/usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"
+    },
+    {
+      "name": "/home/errabellya/Github/ems-messaging/package.json",
+      "includedInParent": true,
+      "mtime": 1568398169888
+    }
+  ],
+  "generated": {
+    "css": "h1, h2, h3, h4, h5, h6 {\n  font-weight: 900 !important;\n  line-height: 1.3em;\n}\n\nbody #main #card .openbtn {\n  font-size: 20px;\n  cursor: pointer;\n  background-color: #9fd5b3;\n  color: #004544;\n  padding: 10px 15px;\n  border: none;\n  top: 10px;\n  left: 10px;\n  z-index: 1;\n  border-radius: 3px;\n}\n\n@media (min-width: 200px) and (max-width: 400px) {\n  .card {\n    z-index: 1;\n    bottom: 0px;\n    position: absolute;\n  }\n}\n@media screen and (min-width: 401px) and (max-width: 1640px) {\n  .card {\n    top: 0px;\n    z-index: 1;\n    position: absolute;\n    right: 0px;\n    height: 155px;\n  }\n}\n@media screen and (max-width: 200px) and (max-height: 450px) {\n  .sidebar {\n    padding-top: 15px;\n  }\n\n  .sidebar a {\n    font-size: 39px;\n  }\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\nbody .sidebar {\n  height: 100%;\n  width: 0;\n  position: fixed;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  overflow-x: hidden;\n  transition: 0.5s;\n}\nbody .sidebar a {\n  padding: 8px 8px 8px 32px;\n  text-decoration: none;\n  font-size: 40px;\n  color: #818181;\n  display: block;\n  transition: 0.3s;\n}\nbody .sidebar a:hover {\n  color: #f1f1f1;\n}\nbody .closebtn {\n  position: absolute;\n  top: 0;\n  right: 25px;\n  font-size: 36px;\n  margin-left: 50px;\n}\nbody form h5 {\n  border-bottom: solid #e48f22;\n  color: #004544;\n  margin-top: 1em;\n  font-size: 25px;\n  padding-bottom: 12px;\n}\nbody form .inputLabel {\n  text-transform: uppercase;\n  font-weight: 900;\n}\nbody form input {\n  font-size: 16px;\n  padding: 7px 28px;\n  border: 3px solid #004445;\n}\nbody form button {\n  transition: all 0.2s ease-in-out;\n  font-size: 16px;\n  text-transform: uppercase;\n  font-weight: 900;\n  background: transparent;\n  background-color: #9fd5b3;\n  border: 3px solid #004445;\n  padding: 8px 11px;\n  color: #004544;\n  border-color: #004445;\n  margin-top: 22px;\n}\nbody form button:hover {\n  background-color: #9fd5b3;\n}\nbody #main {\n  position: relative;\n  transition: margin-left 0.5s;\n  padding: 16px;\n  height: 100%;\n}\nbody #main .mapboxgl-ctrl-geocoder--suggestion-title, body #main .mapboxgl-ctrl-geocoder--suggestion-address {\n  font-size: 12px;\n}\nbody #main .mapboxgl-ctrl-geocoder {\n  left: 27px;\n}\nbody #main #geocoder {\n  padding-right: 30px;\n  position: relative;\n  z-index: 1;\n}\nbody #main #map {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\nbody #main #card {\n  position: absolute;\n}",
+    "js": "var reloadCSS = require('_css_loader');\n\nmodule.hot.dispose(reloadCSS);\nmodule.hot.accept(reloadCSS);"
+  },
+  "sourceMaps": {
+    "css": {
+      "mappings": [
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 1,
+            "column": 0
+          },
+          "generated": {
+            "line": 1,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 2,
+            "column": 8
+          },
+          "generated": {
+            "line": 2,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 3,
+            "column": 8
+          },
+          "generated": {
+            "line": 3,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 6,
+            "column": 0
+          },
+          "generated": {
+            "line": 6,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 7,
+            "column": 14
+          },
+          "generated": {
+            "line": 7,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 8,
+            "column": 16
+          },
+          "generated": {
+            "line": 8,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 9,
+            "column": 16
+          },
+          "generated": {
+            "line": 9,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 10,
+            "column": 16
+          },
+          "generated": {
+            "line": 10,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 11,
+            "column": 16
+          },
+          "generated": {
+            "line": 11,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 12,
+            "column": 16
+          },
+          "generated": {
+            "line": 12,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 13,
+            "column": 16
+          },
+          "generated": {
+            "line": 13,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 14,
+            "column": 16
+          },
+          "generated": {
+            "line": 14,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 15,
+            "column": 16
+          },
+          "generated": {
+            "line": 15,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 16,
+            "column": 16
+          },
+          "generated": {
+            "line": 16,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 21,
+            "column": 1
+          },
+          "generated": {
+            "line": 19,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 22,
+            "column": 3
+          },
+          "generated": {
+            "line": 20,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 23,
+            "column": 9
+          },
+          "generated": {
+            "line": 21,
+            "column": 4
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 24,
+            "column": 9
+          },
+          "generated": {
+            "line": 22,
+            "column": 4
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 25,
+            "column": 9
+          },
+          "generated": {
+            "line": 23,
+            "column": 4
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 28,
+            "column": 1
+          },
+          "generated": {
+            "line": 26,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 29,
+            "column": 3
+          },
+          "generated": {
+            "line": 27,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 30,
+            "column": 9
+          },
+          "generated": {
+            "line": 28,
+            "column": 4
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 31,
+            "column": 9
+          },
+          "generated": {
+            "line": 29,
+            "column": 4
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 32,
+            "column": 9
+          },
+          "generated": {
+            "line": 30,
+            "column": 4
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 33,
+            "column": 9
+          },
+          "generated": {
+            "line": 31,
+            "column": 4
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 34,
+            "column": 9
+          },
+          "generated": {
+            "line": 32,
+            "column": 4
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 41,
+            "column": 1
+          },
+          "generated": {
+            "line": 35,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 42,
+            "column": 5
+          },
+          "generated": {
+            "line": 36,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 43,
+            "column": 9
+          },
+          "generated": {
+            "line": 37,
+            "column": 4
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 46,
+            "column": 5
+          },
+          "generated": {
+            "line": 40,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 47,
+            "column": 8
+          },
+          "generated": {
+            "line": 41,
+            "column": 4
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 50,
+            "column": 0
+          },
+          "generated": {
+            "line": 44,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 51,
+            "column": 4
+          },
+          "generated": {
+            "line": 45,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 52,
+            "column": 4
+          },
+          "generated": {
+            "line": 46,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 54,
+            "column": 1
+          },
+          "generated": {
+            "line": 48,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 55,
+            "column": 5
+          },
+          "generated": {
+            "line": 49,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 56,
+            "column": 5
+          },
+          "generated": {
+            "line": 50,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 57,
+            "column": 5
+          },
+          "generated": {
+            "line": 51,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 58,
+            "column": 5
+          },
+          "generated": {
+            "line": 52,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 59,
+            "column": 5
+          },
+          "generated": {
+            "line": 53,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 60,
+            "column": 5
+          },
+          "generated": {
+            "line": 54,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 61,
+            "column": 5
+          },
+          "generated": {
+            "line": 55,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 62,
+            "column": 5
+          },
+          "generated": {
+            "line": 56,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 63,
+            "column": 5
+          },
+          "generated": {
+            "line": 58,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 64,
+            "column": 9
+          },
+          "generated": {
+            "line": 59,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 65,
+            "column": 9
+          },
+          "generated": {
+            "line": 60,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 66,
+            "column": 9
+          },
+          "generated": {
+            "line": 61,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 67,
+            "column": 9
+          },
+          "generated": {
+            "line": 62,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 68,
+            "column": 9
+          },
+          "generated": {
+            "line": 63,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 69,
+            "column": 9
+          },
+          "generated": {
+            "line": 64,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 70,
+            "column": 9
+          },
+          "generated": {
+            "line": 66,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 71,
+            "column": 13
+          },
+          "generated": {
+            "line": 67,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 75,
+            "column": 9
+          },
+          "generated": {
+            "line": 69,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 76,
+            "column": 21
+          },
+          "generated": {
+            "line": 70,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 77,
+            "column": 21
+          },
+          "generated": {
+            "line": 71,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 78,
+            "column": 21
+          },
+          "generated": {
+            "line": 72,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 79,
+            "column": 21
+          },
+          "generated": {
+            "line": 73,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 80,
+            "column": 21
+          },
+          "generated": {
+            "line": 74,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 83,
+            "column": 12
+          },
+          "generated": {
+            "line": 76,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 85,
+            "column": 22
+          },
+          "generated": {
+            "line": 77,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 86,
+            "column": 22
+          },
+          "generated": {
+            "line": 78,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 87,
+            "column": 22
+          },
+          "generated": {
+            "line": 79,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 88,
+            "column": 22
+          },
+          "generated": {
+            "line": 80,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 89,
+            "column": 22
+          },
+          "generated": {
+            "line": 81,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 91,
+            "column": 18
+          },
+          "generated": {
+            "line": 83,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 93,
+            "column": 27
+          },
+          "generated": {
+            "line": 84,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 94,
+            "column": 27
+          },
+          "generated": {
+            "line": 85,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 96,
+            "column": 18
+          },
+          "generated": {
+            "line": 87,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 97,
+            "column": 22
+          },
+          "generated": {
+            "line": 88,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 98,
+            "column": 22
+          },
+          "generated": {
+            "line": 89,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 99,
+            "column": 22
+          },
+          "generated": {
+            "line": 90,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 102,
+            "column": 18
+          },
+          "generated": {
+            "line": 92,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 103,
+            "column": 22
+          },
+          "generated": {
+            "line": 93,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 104,
+            "column": 22
+          },
+          "generated": {
+            "line": 94,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 105,
+            "column": 22
+          },
+          "generated": {
+            "line": 95,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 106,
+            "column": 22
+          },
+          "generated": {
+            "line": 96,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 107,
+            "column": 22
+          },
+          "generated": {
+            "line": 97,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 108,
+            "column": 22
+          },
+          "generated": {
+            "line": 98,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 109,
+            "column": 22
+          },
+          "generated": {
+            "line": 99,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 110,
+            "column": 22
+          },
+          "generated": {
+            "line": 100,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 111,
+            "column": 22
+          },
+          "generated": {
+            "line": 101,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 112,
+            "column": 22
+          },
+          "generated": {
+            "line": 102,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 113,
+            "column": 22
+          },
+          "generated": {
+            "line": 103,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 114,
+            "column": 22
+          },
+          "generated": {
+            "line": 105,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 115,
+            "column": 22
+          },
+          "generated": {
+            "line": 106,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 124,
+            "column": 5
+          },
+          "generated": {
+            "line": 108,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 125,
+            "column": 8
+          },
+          "generated": {
+            "line": 109,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 126,
+            "column": 8
+          },
+          "generated": {
+            "line": 110,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 127,
+            "column": 8
+          },
+          "generated": {
+            "line": 111,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 128,
+            "column": 8
+          },
+          "generated": {
+            "line": 112,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 129,
+            "column": 8
+          },
+          "generated": {
+            "line": 114,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 130,
+            "column": 8
+          },
+          "generated": {
+            "line": 115,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 132,
+            "column": 8
+          },
+          "generated": {
+            "line": 117,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 133,
+            "column": 11
+          },
+          "generated": {
+            "line": 118,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 135,
+            "column": 4
+          },
+          "generated": {
+            "line": 120,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 136,
+            "column": 8
+          },
+          "generated": {
+            "line": 121,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 137,
+            "column": 8
+          },
+          "generated": {
+            "line": 122,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 138,
+            "column": 8
+          },
+          "generated": {
+            "line": 123,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 140,
+            "column": 5
+          },
+          "generated": {
+            "line": 125,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 141,
+            "column": 9
+          },
+          "generated": {
+            "line": 126,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 142,
+            "column": 9
+          },
+          "generated": {
+            "line": 127,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 143,
+            "column": 9
+          },
+          "generated": {
+            "line": 128,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 144,
+            "column": 9
+          },
+          "generated": {
+            "line": 129,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 145,
+            "column": 9
+          },
+          "generated": {
+            "line": 130,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 146,
+            "column": 9
+          },
+          "generated": {
+            "line": 131,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 147,
+            "column": 9
+          },
+          "generated": {
+            "line": 132,
+            "column": 2
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 151,
+            "column": 0
+          },
+          "generated": {
+            "line": 134,
+            "column": 0
+          }
+        },
+        {
+          "source": "style.scss",
+          "name": null,
+          "original": {
+            "line": 152,
+            "column": 0
+          },
+          "generated": {
+            "line": 135,
+            "column": 2
+          }
+        }
+      ],
+      "sources": {
+        "style.scss": "h1, h2, h3, h4, h5, h6 {\n        font-weight: 900 !important;\n        line-height: 1.3em;\n    }\n\n%openBtnStyle {\n              font-size: 20px;\n                cursor: pointer;\n                background-color: #9fd5b3;\n                color: #004544;\n                padding: 10px 15px;\n                border: none;\n                top: 10px;\n                left: 10px;\n                z-index: 1;\n                border-radius: 3px;\n}\n $layout-breakpoint-small: 200px;\n\n\n @media (min-width: $layout-breakpoint-small) and (max-width : 400px) {\n   .card {\n         z-index: 1;\n         bottom: 0px;\n         position: absolute;\n               }\n }\n @media screen and(min-width:401px) and (max-width: 1640px){\n   .card {\n         top:0px;\n         z-index: 1;\n         position:absolute;\n         right:0px;\n         height: 155px;\n//          .openbtn {\n//             @extend %openBtnStyle;\n//                    }\n            }\n      }\n\n @media screen and (max-width: $layout-breakpoint-small )and (max-height: 450px) {\n     .sidebar {\n         padding-top: 15px;\n     }\n\n     .sidebar a {\n        font-size: 39px;\n     }\n }\nbody {\n    margin: 0;\n    padding: 0;\n//     Sidebar stylings\n .sidebar {\n     height: 100%;\n     width: 0;\n     position: fixed;\n     z-index: 1;\n     top: 0;\n     left: 0;\n     overflow-x: hidden;\n     transition: 0.5s;\n     a {\n         padding: 8px 8px 8px 32px;\n         text-decoration: none;\n         font-size: 40px;\n         color: #818181;\n         display: block;\n         transition: 0.3s;\n         &:hover{\n             color: #f1f1f1;\n             }\n             }\n         }\n         .closebtn {\n                     position: absolute;\n                     top: 0;\n                     right: 25px;\n                     font-size: 36px;\n                     margin-left: 50px;\n                 }\n           form {\n            h5 {\n\n                      border-bottom: solid #e48f22;\n                      color: #004544;\n                      margin-top: 1em;\n                      font-size: 25px;\n                      padding-bottom: 12px;\n                  }\n                  .inputLabel\n                         {\n                           text-transform: uppercase;\n                           font-weight: 900;\n                          }\n                  input{\n                      font-size: 16px;\n                      padding: 7px 28px;\n                      border: 3px solid #004445;\n\n                  }\n                  button{\n                      transition: all .2s ease-in-out;\n                      font-size: 16px;\n                      text-transform: uppercase;\n                      font-weight: 900;\n                      background: transparent;\n                      background-color: #9fd5b3;\n                      border: 3px solid #004445;\n                      padding: 8px 11px;\n                      color: #004544;\n                      border-color: #004445;\n                      margin-top: 22px;\n                      &:hover{\n                      background-color: #9fd5b3\n                      }\n                  }\n\n           }\n\n\n\n//      main , Map , Card\n     #main {\n        position: relative;\n        transition: margin-left .5s;\n        padding: 16px;\n        height: 100%;\n        .mapboxgl-ctrl-geocoder--suggestion-title,.mapboxgl-ctrl-geocoder--suggestion-address{\n        font-size: 12px;\n        }\n        .mapboxgl-ctrl-geocoder {\n           left: 27px;\n        }\n    #geocoder {\n        padding-right: 30px;\n        position: relative;\n        z-index: 1;\n    }\n     #map{\n         position: absolute;\n         top: 0;\n         right: 0;\n         bottom: 0;\n         left: 0;\n         width: 100%;\n         height: 100%;\n\n     }\n//      card changes\n#card{\nposition:absolute;\n.openbtn {\n                @extend %openBtnStyle;\n                      }\n}\n\n         }\n      }\n\n"
+      },
+      "lineCount": null
+    }
+  },
+  "error": null,
+  "hash": "7f6aaa4ed9dafd94b47b59523a3e8406",
+  "cacheData": {
+    "env": {}
+  }
+}

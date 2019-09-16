@@ -33,7 +33,7 @@ import {subscribe} from './components/signup.js'
     closeOnClick: true
   });
   const nav = new mapboxgl.NavigationControl();
-map.addControl(nav, 'top-right');
+map.addControl(nav, 'top-left');
 
   map.on('load', function() {
     map.addLayer({
@@ -94,8 +94,8 @@ map.addControl(nav, 'top-right');
       "type": "fill",
       "source": "zipcode_fill",
       "paint": {
-        'fill-color': 'rgba(200, 100, 240, 0.4)',
-        'fill-outline-color': 'rgba(200, 100, 240, 1)'
+        'fill-color': '#004544',
+        'fill-outline-color': '#004544'
       }
     }); // this is a layer of filled polygon of zipcodes
 

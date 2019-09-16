@@ -8,7 +8,7 @@
     }
   ],
   "generated": {
-    "js": "exports.openNav = function () {\n  document.getElementById(\"mySidebar\").style.width = \"450px\";\n  document.getElementById(\"main\").style.marginLeft = \"450px\";\n};\n\nexports.closeNav = function () {\n  document.getElementById(\"mySidebar\").style.width = \"0\";\n  document.getElementById(\"main\").style.marginLeft = \"0\";\n};"
+    "js": "exports.openNav = function () {\n  document.getElementById(\"mySidebar\").style.width = \"400px\";\n  document.getElementById(\"main\").style.marginLeft = \"400px\";\n};\n\nexports.closeNav = function () {\n  document.getElementById(\"mySidebar\").style.width = \"0\";\n  document.getElementById(\"main\").style.marginLeft = \"0\";\n};"
   },
   "sourceMaps": {
     "js": {
@@ -787,13 +787,13 @@
         }
       ],
       "sources": {
-        "components/function.js": "exports.openNav = function () {\n  document.getElementById(\"mySidebar\").style.width = \"450px\";\n  document.getElementById(\"main\").style.marginLeft = \"450px\";\n}\n\nexports.closeNav = function() {\n  document.getElementById(\"mySidebar\").style.width = \"0\";\n  document.getElementById(\"main\").style.marginLeft = \"0\";\n}\n"
+        "components/function.js": "exports.openNav = function () {\n  document.getElementById(\"mySidebar\").style.width = \"400px\";\n  document.getElementById(\"main\").style.marginLeft = \"400px\";\n}\n\nexports.closeNav = function() {\n  document.getElementById(\"mySidebar\").style.width = \"0\";\n  document.getElementById(\"main\").style.marginLeft = \"0\";\n}\n"
       },
       "lineCount": null
     }
   },
   "error": null,
-  "hash": "25e33aee21056cf3021798ed7156470d",
+  "hash": "b57d6917d4790dcb8a62f1f54271ef89",
   "cacheData": {
     "env": {}
   }
